@@ -1,11 +1,13 @@
 import './App.css';
 import ToDoList from './components/ToDoList/ToDoList.tsx';
 import {useState} from 'react';
+import AddTuskForm from './components/AddTuskForm/AddTuskForm.tsx';
 
 interface ITask {
     taskElement: string
     id: string
 }
+
 
 function App() {
     const [task, setTask] = useState<ITask[]>([
@@ -14,29 +16,33 @@ function App() {
         {taskElement: 'Do homework', id: crypto.randomUUID()},
     ]);
 
+    const createTask = (taskText: string) => {
+        const newTask = {
+            taskElement: taskText,
+            id: crypto.randomUUID(),
+        };
+        setTask([...task, newTask]);
+    };
 
     const changeTask = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
-        const copyTask = task.map((taskElem)=> {
+        const copyTask = task.map((taskElem) => {
 
             if (taskElem.id === id) {
                 return {
                     ...taskElem,
                     taskElement: e.target.value,
                 };
-            } return {...taskElem};
+            }
+            return {...taskElem};
         });
         setTask(copyTask);
     };
-
 
     return (
         <>
             <div className='toDoList'>
                 <div className='header'><h1>JUST DO IT</h1></div>
-                <div className='form'>
-                    <input type="text" className='taskAddInput' placeholder='Add new task'/>
-                    <button type='button' className='addButton'>Add</button>
-                </div>
+                <AddTuskForm onAddTusk={createTask} />
                 {task.map((taskItem) => {
                     return (
                         <ToDoList

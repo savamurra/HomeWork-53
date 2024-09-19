@@ -3,7 +3,7 @@ import './ToDoList.css';
 interface IProps {
     task: string;
     id: string;
-    onChangeTask: React.ChangeEventHandler<HTMLInputElement>
+    onChangeTask: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 const ToDoList: React.FC<IProps> = ({task, onChangeTask}) => {

@@ -1,3 +1,30 @@
-.toDoList{
-    margin: 100px auto;
+.taskWrapper {
+    margin: 10px 20px;
+    border: 2px solid #dfd2cc;
+}
+
+.taskWrapperInner{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #dfd2cc;
+}
+
+.taskWrapper p{
+    margin: 0;
+    padding: 10px 5px;
+}
+
+.deleteBtn{
+    padding: 0 10px;
+    border: none;
+    margin-right: 5px;
+    background: url('../../assets/delete.svg') top 8px right  / 20px auto no-repeat; ;
+    cursor: pointer;
+}
+
+.taskChangeInput{
+    margin: 5px 60px;
+    width: 70%;
+    border: 2px solid #dfd2cc;
+    padding: 5px;
 }

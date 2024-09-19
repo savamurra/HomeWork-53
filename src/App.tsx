@@ -24,6 +24,12 @@ function App() {
         setTask([...task, newTask]);
     };
 
+    const deleteTask = (id: string) => {
+        const copyTusk = task.filter(task => task.id !== id);
+
+        setTask(copyTusk);
+    };
+
     const changeTask = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
         const copyTask = task.map((taskElem) => {
 
@@ -50,6 +56,7 @@ function App() {
                             task={taskItem.taskElement}
                             id={taskItem.id}
                             onChangeTask={e => changeTask(e, taskItem.id)}
+                            onDeleteByID={() => deleteTask(taskItem.id)}
                         />
                     );
                 })}
